@@ -47,12 +47,111 @@
     <section id="projets" class="container section-padding">
         <div class="section-header">
             <h2>Projets Réalisés</h2>
-            <div class="filters">
+            
+            <!-- Nouveau système de filtrage -->
+            <div class="advanced-filters">
+                <!-- Filtres géographiques -->
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="dept-select">Département</label>
+                        <select id="dept-select" class="filter-select">
+                            <option value="">Tous les départements</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="caisse-select">Caisse Locale</label>
+                        <select id="caisse-select" class="filter-select" disabled>
+                            <option value="">Sélectionnez d'abord un département</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="ville-select">Ville</label>
+                        <select id="ville-select" class="filter-select" disabled>
+                            <option value="">Sélectionnez d'abord une caisse</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Filtres de tri pour caisses -->
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="caisse-sort">Ordre des caisses</label>
+                        <select id="caisse-sort" class="filter-select">
+                            <option value="alpha">Alphabétique</option>
+                            <option value="budget">Par budget alloué</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Filtres de type et tri -->
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="type-select">Type d'événement</label>
+                        <select id="type-select" class="filter-select">
+                            <option value="">Tous les types</option>
+                            <option value="sportif">Sportif</option>
+                            <option value="caritatif">Caritatif</option>
+                            <option value="culturel">Culturel</option>
+                            <option value="environnement">Environnement</option>
+                            <option value="social">Social</option>
+                            <option value="commerce">Commerce</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="event-sort">Ordre des événements</label>
+                        <select id="event-sort" class="filter-select">
+                            <option value="recent">Plus récent au plus ancien</option>
+                            <option value="ancien">Plus ancien au plus récent</option>
+                            <option value="budget-desc">Budget décroissant</option>
+                            <option value="budget-asc">Budget croissant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Filtre par plage de dates -->
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="date-start">Date de début</label>
+                        <input type="date" id="date-start" class="filter-input">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="date-end">Date de fin</label>
+                        <input type="date" id="date-end" class="filter-input">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button id="reset-filters" class="btn-secondary">
+                            <i class="fas fa-redo"></i> Réinitialiser
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicateur de résultats -->
+            <div class="results-info">
+                <span id="results-count">0 projet(s) affiché(s)</span>
+            </div>
+
+            <!-- Anciens filtres simplifiés (conservés pour compatibilité) -->
+            <div class="filters filters-legacy">
                 <button class="filter-btn active" data-filter="all">Tous</button>
                 <button class="filter-btn" data-filter="environnement">Environnement</button>
                 <button class="filter-btn" data-filter="social">Social</button>
                 <button class="filter-btn" data-filter="commerce">Commerce</button>
             </div>
+        </div>
+
+        <div class="projects-grid" id="projects-container">
+            <!-- Les projets seront générés dynamiquement -->
+        </div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search"></i>
+            <p>Aucun projet ne correspond à vos critères</p>
         </div>
 
         <div class="projects-grid">
@@ -175,7 +274,7 @@
     </section>
 
     <footer>
-        <p>© 2024 Impact Local - En partenariat avec Crédit Agricole</p>
+        <p>© 2026 Impact Local - En partenariat avec Crédit Agricole</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

@@ -53,4 +53,5 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("Merci ! Votre signalement a bien été enregistré sur le tableau de bord local.");
         form.reset();
     });
+    
 });
